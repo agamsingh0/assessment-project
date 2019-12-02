@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find Your Doctor</title>
+  
+   <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div>
+  	<div id="bg" style=" background: url('giphy2.gif'); border: solid; background-position: center;background-repeat: no-repeat;background-size: 100% 100%;padding: 100px;background-attachment: fixed">
+  		  <a href="bmi.html"><button  style="position: absolute;top:120px; right: 70px;width:200px;color:white;height: 40px;
+  		  background-color: #262626;display: inline-block;font-size: 20px;border-radius: 15px;outline: none;border:none;box-shadow:0 4px #80d4ff;font-family: 'Comfortaa', cursive;cursor: pointer;font:smartie;" id="btn5" >Check Your BMI</button></a>
+
+  		<img src="logo.png" style="top:2px;left: 16px;width:250px; /*padding:10px;*/ position:relative" />
+  		 <div class='quote-text'>
+                       <h1 id='quote'></h1>
+                        <p id='author'></p>
+                         </div>
+            <h1 style="padding: 90px; text-align:center;font-family: Lobster;animation-name: search; animation-duration: 3s;color:black ;animation-fill-mode: forwards; font-size: 55px;">Search Your Doctor</h1>
+        <center><input  type="text" id="search" name="value" style="margin-top: 5px; "><br>
+        <button  style="margin-top: 10px; margin-bottom: 100px;" id="btn" onclick="f1()">Search</button>
+       
+            
+    </div>
+						
+		</div>
+   <div id="dd" background="pic1.jpg">
+    	<h1 id="h" style="text-align: center;font-family:'Dosis', sans-serif "></h1></center>
+      <div id="div1" style="margin-left:10px;font-weight: all;">
+            <div id="map"></div>
+    <script>
+	
+function f1()
+{
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange=function() {
+	 var h1 = document.getElementById("h");
+	 h1.innerHTML = "Search Results for "+"'"+c+"'";
+    var b = document.getElementById("div1");
+    if (this.readyState == 4 && this.status == 200)
+     {
+     	var a = JSON.parse(this.responseText);
+     	console.log(a);
+     	for(var i=0;i<a.data.length;i++)
+     	{
+     			var g = document.createElement("h4");
+		        g.setAttribute("id","gg");
+		        g.innerHTML = "<b>About Doctor:</b>"+a.data[i].profile.bio+"<br>";
+		        var gg = document.createElement("h4");
+		        gg.setAttribute("id","gg1");
+		        gg.innerHTML = "NAME:"+a.data[i].profile.first_name+"<br>"+"Gender:"+a.data[i].profile.gender+"<br>"+"Qualification:"+a.data[i].profile.title+"<br>";
+		        var g1 = document.createElement("h4");
+		        g1.setAttribute("id","gg2");
+		        g1.innerHTML = "Specialties:-"+a.data[i].specialties[0].category+","+a.data[i].specialties[0].description+","+a.data[i].specialties[0].name;
+		        
+		        // var g1 = document.createElement("p");
+		        var ifr = document.createElement("iframe");
+		        ifr.setAttribute("id","map");
+		        var loc = a.data[i].practices[0].visit_address.city;
+		        ifr.setAttribute("src","https://maps.google.com/maps?q="+loc+"&t=&z=13&ie=UTF8&iwloc=&output=embed")
+		        var g2 = document.createElement("a");
+			        g2.setAttribute("id","bb");
+			        g2.setAttribute("href","https://doctorsoncallnyc.com/contact-us/");
+              var btn = document.createElement("button");
+              g2.appendChild(btn);
+              btn.setAttribute("id","btn2");
+              btn.innerHTML = "Call";
+           //     var maps = document.createElement("a");
+			        // maps.setAttribute("id","maps");
+			        // maps.setAttribute("href","googlemaap.html");
+           //    var btnmap = document.createElement("button");
+           //    maps.appendChild(btnmap);
+           //    btnmap.setAttribute("id","btnmap");
+           //    btnmap.innerHTML = "Go to Maps";
+			        var g3 = document.createElement("h4");
+		        g3.setAttribute("id","gg");
+		        g3.innerHTML = "<b>Insurance Providers:</b>"+a.data[i].insurances[0].insurance_plan.name+"<br>"+a.data[i].insurances[1].insurance_plan.name;
+		        // g1.setAttribute("id","gg2");
+		        // g1.innerHTML = "<b>Details</b>"+"<br>"+a.data[i].name;
+		        // var g2 = document.createElement("h1");
+		        // g2.setAttribute("id","gg1");
+		        // g2.innerHTML = a.data[0].profile.first_name;
+             var g33 = document.createElement("a");
+              g33.setAttribute("id","bb");
+              g33.setAttribute("href","googlemaap.html");
+              var btn1 = document.createElement("button");
+              g33.appendChild(btn1);
+              btn1.setAttribute("id","btn3");
+              btn1.innerHTML = "Go to map";
+		        var hr = document.createElement("hr");
+		        hr.setAttribute("id","hr1");
+		        b.appendChild(gg);
+		        b.appendChild(g);
+                b.appendChild(g1);
+                b.appendChild(ifr);
+                b.appendChild(g2);
+                 b.appendChild(g33);  
+                b.appendChild(g3);
+
+                b.appendChild(hr);
+     	}
+     }
+ }
+        // var g2 = document.createElement("h1");
+        // g2.setAttribute("id","gg1");
+        // g2.innerHTML = a.data[0].profile.first_name;
+        // b.appendChild(g2);
+        var c = document.getElementById("search").value; 
+        xhttp.open("GET", "https://api.betterdoctor.com/2016-03-01/doctors?query="+c+"&skip=0&limit=10&user_key=c0e556b1e7f5cff2932c8b9d3a6d2c12");
+		xhttp.send();
+		
+}
+</script>
+<script>
+                                var url="https://api.quotable.io/random";
+                                var xhr=new XMLHttpRequest()
+                                xhr.open('GET',url)
+                                xhr.onreadystatechange=getData
+                                function getData()
+                                {
+                                  var res_data=JSON.parse(this.responseText)
+                                  var a=res_data.content;
+                                  var b=res_data.author;
+                                  console.log(res_data);
+                                 var get_tag=document.getElementById('quote');
+                                  get_tag.innerHTML=a;
+                                  var get_tag1=document.getElementById('author');
+                                 get_tag1.innerHTML=b;
+                             }
+                               xhr.send();
+
+
+	</script>
+</body>
+</html>
