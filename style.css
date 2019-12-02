@@ -1,5 +1,4 @@
-
-      #dd
+    #divbg
       {
        background-image: url("pic3.jpg");
        height:100%;
@@ -10,25 +9,19 @@
        background-attachment: fixed;
        border-style: solid;
       }
-      #xx
-      {
-          margin-bottom: 20px;
-          border: 1px solid black;
-          padding: 2px;
-          background-color: gray;
-      }
-      #gg
+     
+      #bio
       {
          font-family: 'Comfortaa', cursive;
          font-size: 20px;
          margin-bottom: 15px;
       }
-      #gg2
+      #specs
       {
           font-size: 18px;
          
       }
-      #bb
+      #map1
       {
          margin-bottom: 50px;
       }
@@ -57,24 +50,24 @@
       #btn
       {
      
-      
+     
       background-color: #ccffff;
       padding: 10px;
       border-radius: 25px;
       width: 15%;
-      
+     
     }
     #btn2
       {
      
-      
+     
       background-color: white;
       padding: 10px;
       border-radius: 25px;
       width: 5%;
-      
+     
     }
-    #gg1
+    #name
     {
       font-size: 25px;
     }
@@ -85,15 +78,25 @@
       border-radius: 25px;
       width: 5%;
     }
-    /*#btn5
-    {
-    	background-color: white;
-      padding: 10px;
-      border-radius: 25px;
-      width: 5%;
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 5%;
+   background-color: white;
+   color: black;
+   text-align: center;
+   opacity: 1;
+   margin-top: 300px;
+   padding: 0;
 
-    
-    }*/
+ }
+#agam {
+  text-align: right;
+  margin-right: 30px;
+}
+
     body
     {
       margin: 0%;
@@ -106,4 +109,3 @@
   from {color: #0243ad;font-size: 55px;}
   to {color:black ; font-size: 80px;}
 }
-      
